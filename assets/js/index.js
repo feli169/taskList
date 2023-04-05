@@ -27,6 +27,8 @@ const addTask = () =>{
 }
 
 const updateList =() => {
+    let btnCanRealizadas = document.getElementById('canRealizadas');
+    let success = 0
     let cantidad = 0
     let html = '';
     for(let task of taskList){
@@ -38,12 +40,15 @@ const updateList =() => {
             <td class="text-end"><button id=button onclick="eliminar(${task.id})" class="btn btn-danger" id="btnEliminar">Eliminar</button></td>
         </tr>`
         cantidad ++;
+        if(task.status) {
+            success++;
+        }
         }
 
         task.value ='';
         tbodyTasks.innerHTML = html;
         document.querySelector('#canTareas').innerHTML = cantidad
-        document.querySelector('#canTareas').innerHTML = cantidad
+        document.querySelector('#canRealizadas').innerHTML = success
 }
 
 const actualizarEstado = (taskId) =>{
